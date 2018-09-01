@@ -6,4 +6,4 @@ from ..utils import applier, translator
 
 IN, OUT = ACUTE, 'Ь'
 
-apply = applier(translator(IN * 2, OUT + OUT.lower()))
+do = translator(IN * 2, OUT + OUT.lower())

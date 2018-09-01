@@ -10,7 +10,6 @@ from . import (
     rule_2_2,
     rule_3_1,
     rule_3_2,
-    text_post,
 )
 from ..utils import applier
 
@@ -26,7 +25,6 @@ ORDER = (
     rule_1_7,
     rule_2_1,
     rule_3_1,
-    text_post,
 )
 
-apply = applier(*(rule.apply for rule in ORDER))
+do = applier(*(rule.do for rule in ORDER))

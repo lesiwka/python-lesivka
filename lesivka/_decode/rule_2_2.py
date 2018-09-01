@@ -21,4 +21,4 @@ def _replace():
     return replacer(replace)
 
 
-apply = applier(_replace())
+do = _replace()

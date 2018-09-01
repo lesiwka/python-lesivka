@@ -5,8 +5,4 @@ from ..utils import applier, replacer
 
 IN, OUT = 'JI', 'Ї'
 
-apply = applier(replacer({
-    IN: OUT,
-    IN.title(): OUT,
-    IN.lower(): OUT.lower()
-}))
+do = replacer({IN: OUT, IN.title(): OUT, IN.lower(): OUT.lower()})

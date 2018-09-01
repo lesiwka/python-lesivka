@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import pytest
 
 from lesivka import decode
+from lesivka.diacritics import CARON
 
 
 @pytest.mark.parametrize('given,expected', (
@@ -55,6 +56,10 @@ from lesivka import decode
     ('ƶvonik', 'дзвоник'),
     ('ṕidživiti', 'підживити'),
     ('v́idznačiti', 'відзначити'),
+    ('c' + CARON + 'aj', 'чай'),
+    ('paṕir', 'папір'),
+    ('Nad-Ja', 'Над-Я'),
+    ('MakKuin', 'МакКуін'),
 ))
 def test_encode(given, expected):
     assert decode(given) == expected

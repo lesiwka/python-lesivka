@@ -4,12 +4,14 @@ from __future__ import unicode_literals
 from ..diacritics import ACUTE
 from ..utils import applier, replacer, translator
 
-IN, OUT = 'І', ACUTE + 'I'
-AFTER = 'AEIOU'
+IN, OUT = 'І', 'I'
+AFTER = 'AEIOU' + ACUTE
 
 
 def _step2():
-    _replacer = replacer({c + ACUTE: c for c in AFTER + AFTER.lower()})
+    replace = zip(AFTER + AFTER.lower(),
+                  OUT * len(AFTER) + OUT.lower() * len(AFTER))
+    _replacer = replacer({c + ACUTE + i: c + i for c, i in replace})
 
     def _strip_replace(text):
         text = _replacer(text)
@@ -18,7 +20,6 @@ def _step2():
     return _strip_replace
 
 
-step1 = translator({IN: OUT, IN.lower(): OUT.lower()})
-step2 = _step2()
+step1 = translator({IN: ACUTE + OUT, IN.lower(): ACUTE + OUT.lower()})
 
-apply = applier(step1, step2)
+do = applier(step1, _step2())

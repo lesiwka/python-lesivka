@@ -15,4 +15,4 @@ def affricates():
     return translator(translate)
 
 
-apply = applier(affricates())
+do = affricates()

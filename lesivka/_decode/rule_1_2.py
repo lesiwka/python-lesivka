@@ -5,4 +5,4 @@ from ..utils import applier, translator
 
 IN, OUT = 'BVHGDZKLMNPRSTFXC', 'БВГҐДЗКЛМНПРСТФХЦ'
 
-apply = applier(translator(IN + IN.lower(), OUT + OUT.lower()))
+do = translator(IN + IN.lower(), OUT + OUT.lower())

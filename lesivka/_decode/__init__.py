@@ -29,4 +29,4 @@ ORDER = (
     rule_3_2,
 )
 
-apply = applier(*(rule.apply for rule in ORDER))
+do = applier(*(rule.do for rule in ORDER))

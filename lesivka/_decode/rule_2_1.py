@@ -30,7 +30,5 @@ def _step3():
 
 step1 = replacer({ACUTE + i: o for i, o in
                   zip(IN + IN.lower(), OUT + OUT.lower())})
-step2 = _step2()
-step3 = _step3()
 
-apply = applier(step1, step2, step3)
+do = applier(step1, _step2(), _step3())

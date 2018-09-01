@@ -30,4 +30,4 @@ def fix_combinings():
     return replacer(combinings)
 
 
-apply = applier(fix_combinings())
+do = fix_combinings()

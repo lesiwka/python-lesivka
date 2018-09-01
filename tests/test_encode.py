@@ -55,6 +55,14 @@ from lesivka import encode
     ('дзвоник', 'ƶvonik'),
     ('підживити', 'ṕidživiti'),
     ('відзначити', 'v́idznačiti'),
+    ('абе́тка', 'abétka'),
+    ('Яблуко', 'Jabluko'),
+    ('Я, РОБОТ', 'JA, ROBOT'),
+    ('Над-Я', 'Nad-Ja'),
+    ('ПП', 'PP'),
+    ('МакКуін', 'MakKuin'),
+    ('Це \u2019риба\u2019.', 'Ce \u2019riba\u2019.'),
+    ("\u2019пір\u2019я\u2019", '\u2019ṕirja\u2019'),
 ))
 def test_encode(given, expected):
     assert encode(given) == expected

@@ -29,6 +29,4 @@ def _step2():
     return translator(translate)
 
 
-step1, step2 = _step1(), _step2()
-
-apply = applier(step1, step2)
+do = applier(_step1(), _step2())

@@ -22,9 +22,8 @@ REPLACE = {
 
 def new_affricates():
     replace = REPLACE.copy()
-    replacement = REPLACE.items()
-    replace.update({i.title(): o for i, o in replacement})
-    replace.update({i.lower(): o.lower() for i, o in replacement})
+    replace.update({i.title(): o for i, o in REPLACE.items()})
+    replace.update({i.lower(): o.lower() for i, o in REPLACE.items()})
 
     _replacer = replacer(replace)
 
@@ -39,4 +38,4 @@ def new_affricates():
     return _replace
 
 
-apply = applier(new_affricates())
+do = new_affricates()
