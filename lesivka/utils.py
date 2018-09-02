@@ -33,8 +33,8 @@ def get_word_cls(valid, action):
     valid = set(valid)
 
     class Word(object):
-        def __init__(self, w='', prev=None, next_=None):
-            self._word = w
+        def __init__(self, word='', prev=None, next_=None):
+            self._word = word
             self._prev = prev
             self._next = next_
             if prev is not None:
