@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from ..utils import applier, replacer
+from ..utils import replace
 
 PREFIXES = (
     'ВІД',
@@ -20,22 +20,22 @@ REPLACE = {
 }
 
 
-def new_affricates():
-    replace = REPLACE.copy()
-    replace.update({i.title(): o for i, o in REPLACE.items()})
-    replace.update({i.lower(): o.lower() for i, o in REPLACE.items()})
+def get_convert():
+    data = REPLACE.copy()
+    data.update({i.title(): o for i, o in REPLACE.items()})
+    data.update({i.lower(): o.lower() for i, o in REPLACE.items()})
 
-    _replacer = replacer(replace)
+    repl = replace(data)
 
-    def _replace(text):
+    def convert(text):
         for prefix in PREFIXES:
             if text.upper().startswith(prefix):
                 index = len(prefix)
-                return text[:index] + _replacer(text[index:])
+                return text[:index] + repl(text[index:])
 
-        return _replacer(text)
+        return repl(text)
 
-    return _replace
+    return convert
 
 
-do = new_affricates()
+convert = get_convert()

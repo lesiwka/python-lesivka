@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from ..utils import translator
+from ..utils import translate
 
 IN, OUT = 'Й', 'J'
 
-do = translator(IN + IN.lower(), OUT + OUT.lower())
+convert = translate(IN + IN.lower(), OUT + OUT.lower())

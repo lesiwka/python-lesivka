@@ -2,33 +2,33 @@
 from __future__ import unicode_literals
 
 from ..diacritics import ACUTE
-from ..utils import applier, replacer
+from ..utils import applier, replace
 
 IN, OUT = 'I', 'І'
 AFTER = 'AEIOU'
 
 
-def _step2():
-    replace = {}
+def get_step2():
+    data = {}
     for i, o in zip(IN + IN.lower(), OUT + OUT.lower()):
         for c in AFTER + AFTER.lower():
-            replace[c + i] = c + o
+            data[c + i] = c + o
 
-    return replacer(replace)
+    return replace(data)
 
 
-def _step3():
-    replace = {i: o for i, o in zip(IN + IN.lower(), OUT + OUT.lower())}
+def get_step3():
+    data = {i: o for i, o in zip(IN + IN.lower(), OUT + OUT.lower())}
 
-    def _replace(text):
-        if text.startswith(tuple(replace)):
-            return replace[text[0]] + text[1:]
+    def convert(text):
+        if text.startswith(tuple(data)):
+            return data[text[0]] + text[1:]
         return text
 
-    return _replace
+    return convert
 
 
-step1 = replacer({ACUTE + i: o for i, o in
-                  zip(IN + IN.lower(), OUT + OUT.lower())})
+step1 = replace({ACUTE + i: o for i, o in
+                 zip(IN + IN.lower(), OUT + OUT.lower())})
 
-do = applier(step1, _step2(), _step3())
+convert = applier(step1, get_step2(), get_step3())

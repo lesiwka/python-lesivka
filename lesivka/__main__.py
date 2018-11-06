@@ -1,7 +1,6 @@
 from __future__ import print_function
 
 import argparse
-import codecs
 import sys
 
 try:
@@ -9,6 +8,7 @@ try:
 except ImportError:
     pass
 else:
+    import codecs
     encoding = sys.stdin.encoding or 'utf-8'
     sys.stdin = codecs.getreader(encoding)(sys.stdin)
     sys.argv = [arg.decode(encoding) for arg in sys.argv]

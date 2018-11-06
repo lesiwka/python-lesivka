@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from ..utils import translator
+from ..utils import translate
 
 IN, OUT = 'Щ', 'ŠČ'
 
-do = translator({IN: OUT, IN.lower(): OUT.lower()})
+convert = translate({IN: OUT, IN.lower(): OUT.lower()})

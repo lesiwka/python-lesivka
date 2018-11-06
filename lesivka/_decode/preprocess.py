@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from ..diacritics import ACUTE, CARON
-from ..utils import applier, replacer
+from ..utils import replace
 
 COMBININGS = {
     'C' + CARON: 'Č',
@@ -21,13 +21,13 @@ COMBININGS = {
 }
 
 
-def fix_combinings():
-    combinings = COMBININGS.copy()
+def get_convert():
+    data = COMBININGS.copy()
 
     for i, o in COMBININGS.items():
-        combinings[i.lower()] = o.lower()
+        data[i.lower()] = o.lower()
 
-    return replacer(combinings)
+    return replace(data)
 
 
-do = fix_combinings()
+convert = get_convert()

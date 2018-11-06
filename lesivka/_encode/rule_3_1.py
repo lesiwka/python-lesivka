@@ -6,13 +6,13 @@ import re
 from ..diacritics import APOSTROPHES
 
 
-def remove_apostrophe():
-    pattern = re.compile('(\w)([%s])(\w)' % APOSTROPHES, re.UNICODE)
+def get_convert():
+    pattern = re.compile('(\w)[%s](\w)' % APOSTROPHES, re.UNICODE)
 
-    def remove(text):
-        return ''.join(t for t in pattern.split(text) if t not in APOSTROPHES)
+    def convert(text):
+        return ''.join(t for t in pattern.split(text))
 
-    return remove
+    return convert
 
 
-do = remove_apostrophe()
+convert = get_convert()

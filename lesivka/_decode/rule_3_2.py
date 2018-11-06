@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from ..utils import applier, translator
+from ..utils import translate
 
 TRANSLATE = {
     'Đ': 'ДЖ',
@@ -9,10 +9,10 @@ TRANSLATE = {
 }
 
 
-def affricates():
-    translate = TRANSLATE.copy()
-    translate.update({i.lower(): o.lower() for i, o in TRANSLATE.items()})
-    return translator(translate)
+def get_convert():
+    data = TRANSLATE.copy()
+    data.update({i.lower(): o.lower() for i, o in TRANSLATE.items()})
+    return translate(data)
 
 
-do = affricates()
+convert = get_convert()

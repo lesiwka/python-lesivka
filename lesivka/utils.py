@@ -21,12 +21,12 @@ class Converter(object):
 
 
 def applier(*funcs):
-    def do(text):
+    def convert(text):
         for func in funcs:
             text = func(text)
         return text
 
-    return do
+    return convert
 
 
 def get_word_cls(valid, action):
@@ -85,19 +85,19 @@ def get_word_cls(valid, action):
     return Word
 
 
-def replacer(d):
-    def replace(text):
+def replace(d):
+    def convert(text):
         for i, o in d.items():
             text = text.replace(i, o)
         return text
 
-    return replace
+    return convert
 
 
-def translator(*args):
+def translate(*args):
     trans = str.maketrans(*args)
 
-    def translate(text):
+    def convert(text):
         return text.translate(trans)
 
-    return translate
+    return convert

@@ -63,6 +63,8 @@ from lesivka import encode
     ('МакКуін', 'MakKuin'),
     ('Це \u2019риба\u2019.', 'Ce \u2019riba\u2019.'),
     ("\u2019пір\u2019я\u2019", '\u2019ṕirja\u2019'),
+    ("'м'яч'", "'mjač'"),
+    ("'", "'"),
 ))
 def test_encode(given, expected):
     assert encode(given) == expected

@@ -1,5 +1,8 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from . import (
-    pre_text,
+    preprocess,
     rule_1_1,
     rule_1_2,
     rule_1_3,
@@ -12,10 +15,11 @@ from . import (
     rule_3_1,
     rule_3_2,
 )
-from ..utils import applier
+from ..diacritics import ACUTE, CARON
+from ..utils import Converter, applier
 
 ORDER = (
-    pre_text,
+    preprocess,
     rule_3_1,
     rule_2_1,
     rule_2_2,
@@ -29,4 +33,7 @@ ORDER = (
     rule_3_2,
 )
 
-do = applier(*(rule.do for rule in ORDER))
+LAT = 'ABCČDĐEFGHIJKLMNOPRSŠTUVXZŽƵ' + ACUTE + CARON + 'ĆĹŃŔŚŹǴḰḾṔ'
+
+convert = applier(*(rule.convert for rule in ORDER))
+decode = Converter('([^\w%s]+)' % (ACUTE + CARON), LAT, convert)

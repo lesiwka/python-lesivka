@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from . import (
     rule_1_1,
     rule_1_2,
@@ -11,7 +14,8 @@ from . import (
     rule_3_1,
     rule_3_2,
 )
-from ..utils import applier
+from ..diacritics import ACUTE, APOSTROPHES
+from ..utils import Converter, applier
 
 ORDER = (
     rule_1_6,
@@ -27,4 +31,7 @@ ORDER = (
     rule_3_1,
 )
 
-do = applier(*(rule.do for rule in ORDER))
+CYR = 'АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ' + ACUTE + APOSTROPHES
+
+convert = applier(*(rule.convert for rule in ORDER))
+encode = Converter('([^\w%s]+)' % (ACUTE + APOSTROPHES), CYR, convert)

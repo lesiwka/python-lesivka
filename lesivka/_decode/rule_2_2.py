@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from ..diacritics import ACUTE
-from ..utils import applier, replacer
+from ..utils import replace
 
 REPLACE = {
     ACUTE + 'E': 'Є',
@@ -14,11 +14,11 @@ REPLACE = {
 }
 
 
-def _replace():
-    replace = REPLACE.copy()
-    replace.update({i.title(): o for i, o in REPLACE.items()})
-    replace.update({i.lower(): o.lower() for i, o in REPLACE.items()})
-    return replacer(replace)
+def get_convert():
+    data = REPLACE.copy()
+    data.update({i.title(): o for i, o in REPLACE.items()})
+    data.update({i.lower(): o.lower() for i, o in REPLACE.items()})
+    return replace(data)
 
 
-do = _replace()
+convert = get_convert()

@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from ..diacritics import ACUTE
-from ..utils import applier, replacer, translator
+from ..utils import applier, replace, translate
 
 IN, OUT = 'ЄЮЯ', 'EUA'
 AFTER = 'БВГҐДЖЗКЛМНПРСТФХЦЧШЩ'
@@ -14,19 +14,19 @@ TRANSLATE = {
 }
 
 
-def _step1():
-    replace = {}
+def get_step1():
+    data = {}
     for c in AFTER + AFTER.lower():
         for i, o in zip(IN + IN.lower(), OUT + OUT.lower()):
-            replace[c + i] = c + ACUTE + o
+            data[c + i] = c + ACUTE + o
 
-    return replacer(replace)
-
-
-def _step2():
-    translate = TRANSLATE.copy()
-    translate.update({i.lower(): o.lower() for i, o in TRANSLATE.items()})
-    return translator(translate)
+    return replace(data)
 
 
-do = applier(_step1(), _step2())
+def get_step2():
+    data = TRANSLATE.copy()
+    data.update({i.lower(): o.lower() for i, o in TRANSLATE.items()})
+    return translate(data)
+
+
+convert = applier(get_step1(), get_step2())
