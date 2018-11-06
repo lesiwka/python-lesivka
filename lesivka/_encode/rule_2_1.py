@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from ..diacritics import ACUTE
-from ..utils import applier, replace, translate
+from ..utils import applier, replacer, translator
 
 IN, OUT = 'І', 'I'
 AFTER = 'AEIOU' + ACUTE
@@ -11,7 +11,7 @@ AFTER = 'AEIOU' + ACUTE
 def get_step2():
     data = zip(AFTER + AFTER.lower(),
                OUT * len(AFTER) + OUT.lower() * len(AFTER))
-    repl = replace({c + ACUTE + i: c + i for c, i in data})
+    repl = replacer({c + ACUTE + i: c + i for c, i in data})
 
     def convert(text):
         text = repl(text)
@@ -20,6 +20,6 @@ def get_step2():
     return convert
 
 
-step1 = translate({IN: ACUTE + OUT, IN.lower(): ACUTE + OUT.lower()})
+step1 = translator({IN: ACUTE + OUT, IN.lower(): ACUTE + OUT.lower()})
 
 convert = applier(step1, get_step2())

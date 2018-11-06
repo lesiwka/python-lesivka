@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from ..diacritics import ACUTE, CARON
-from ..utils import replace
+from ..utils import replacer
 
 COMBININGS = {
     'C' + CARON: 'Č',
@@ -27,7 +27,7 @@ def get_convert():
     for i, o in COMBININGS.items():
         data[i.lower()] = o.lower()
 
-    return replace(data)
+    return replacer(data)
 
 
 convert = get_convert()

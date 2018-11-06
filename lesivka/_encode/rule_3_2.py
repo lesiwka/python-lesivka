@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from ..utils import replace
+from ..utils import replacer
 
 PREFIXES = (
     'ВІД',
@@ -25,7 +25,7 @@ def get_convert():
     data.update({i.title(): o for i, o in REPLACE.items()})
     data.update({i.lower(): o.lower() for i, o in REPLACE.items()})
 
-    repl = replace(data)
+    repl = replacer(data)
 
     def convert(text):
         for prefix in PREFIXES:

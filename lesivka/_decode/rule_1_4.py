@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from ..diacritics import ACUTE
-from ..utils import translate
+from ..utils import translator
 
 IN, OUT = ACUTE, 'Ь'
 
-convert = translate(IN * 2, OUT + OUT.lower())
+convert = translator(IN * 2, OUT + OUT.lower())

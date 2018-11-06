@@ -85,7 +85,7 @@ def get_word_cls(valid, action):
     return Word
 
 
-def replace(d):
+def replacer(d):
     def convert(text):
         for i, o in d.items():
             text = text.replace(i, o)
@@ -94,7 +94,7 @@ def replace(d):
     return convert
 
 
-def translate(*args):
+def translator(*args):
     trans = str.maketrans(*args)
 
     def convert(text):

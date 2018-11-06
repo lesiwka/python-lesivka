@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from ..utils import replace
+from ..utils import replacer
 
 IN, OUT = 'JI', 'Ї'
 
-convert = replace({IN: OUT, IN.title(): OUT, IN.lower(): OUT.lower()})
+convert = replacer({IN: OUT, IN.title(): OUT, IN.lower(): OUT.lower()})
