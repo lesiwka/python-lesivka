@@ -7,5 +7,6 @@ AFTER = 'BVHGDZKLMNPRSTFXC' + 'ŽČŠ'
 
 convert = replacer({
     i + o: i + "'" + o for i, o in
-    zip(AFTER + AFTER.lower(), 'J' * len(AFTER) + 'j' * len(AFTER))
+    zip(AFTER * 2 + AFTER.lower() * 2,
+        ('J' * len(AFTER) + 'j' * len(AFTER)) * 2)
 })

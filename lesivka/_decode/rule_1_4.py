@@ -6,4 +6,4 @@ from ..utils import translator
 
 IN, OUT = ACUTE, 'Ь'
 
-convert = translator(IN * 2, OUT + OUT.lower())
+convert = translator(IN, OUT.lower())
