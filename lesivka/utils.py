@@ -52,7 +52,7 @@ def get_word_cls(valid, action):
             if self.is_upper() and (p and p.is_upper() or n and n.is_upper()):
                 return w.upper()
 
-            if self._word.istitle():
+            if w and self._word.istitle():
                 return w[0].upper() + w[1:].lower()
 
             return w

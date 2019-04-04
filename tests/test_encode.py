@@ -67,6 +67,7 @@ from lesivka import encode
     ("'", "'"),
     ('сыр', 'сыр'),
     ('Є ', 'Je '),
+    ('Ь', ''),
 ))
 def test_encode(given, expected):
     assert encode(given) == expected
