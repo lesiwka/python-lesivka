@@ -61,6 +61,7 @@ from lesivka.diacritics import CARON
     ('Nad-Ja', 'Над-Я'),
     ('MakKuin', 'МакКуін'),
     ('Mjač', "М'яч"),
+    ('vjo', 'вйо'),
 ))
 def test_encode(given, expected):
     assert decode(given) == expected
