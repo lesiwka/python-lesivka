@@ -5,7 +5,7 @@ from ..diacritics import ACUTE
 from ..utils import applier, replacer, translator
 
 IN, OUT = 'І', 'I'
-AFTER = 'AEIOU' + ACUTE
+AFTER = 'AEIOUJ' + ACUTE
 
 
 def get_step2():
