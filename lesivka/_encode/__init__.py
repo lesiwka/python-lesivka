@@ -34,4 +34,4 @@ ORDER = (
 CYR = 'АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ' + ACUTE + APOSTROPHES
 
 convert = applier(*(rule.convert for rule in ORDER))
-encode = Converter('([^\w%s]+)' % (ACUTE + APOSTROPHES), CYR, convert)
+encode = Converter(r'([^\w%s]+)' % (ACUTE + APOSTROPHES), CYR, convert)

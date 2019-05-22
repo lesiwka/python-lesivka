@@ -36,4 +36,4 @@ ORDER = (
 LAT = 'ABCČDĐEFGHIJKLMNOPRSŠTUVXZŽƵ' + ACUTE + CARON + 'ĆĹŃŔŚŹǴḰḾṔ'
 
 convert = applier(*(rule.convert for rule in ORDER))
-decode = Converter('([^\w%s]+)' % (ACUTE + CARON), LAT, convert)
+decode = Converter(r'([^\w%s]+)' % (ACUTE + CARON), LAT, convert)
