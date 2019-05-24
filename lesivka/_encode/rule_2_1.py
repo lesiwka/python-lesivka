@@ -13,11 +13,11 @@ def get_step2():
                OUT * len(AFTER) + OUT.lower() * len(AFTER))
     repl = replacer({c + ACUTE + i: c + i for c, i in data})
 
-    def convert(text):
+    def _(text):
         text = repl(text)
         return text.lstrip(ACUTE)
 
-    return convert
+    return _
 
 
 step1 = translator({IN: ACUTE + OUT, IN.lower(): ACUTE + OUT.lower()})

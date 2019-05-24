@@ -20,12 +20,12 @@ def get_step2():
 def get_step3():
     data = {i: o for i, o in zip(IN + IN.lower(), OUT + OUT.lower())}
 
-    def convert(text):
+    def _(text):
         if text.startswith(tuple(data)):
             return data[text[0]] + text[1:]
         return text
 
-    return convert
+    return _
 
 
 step1 = replacer({ACUTE + i: o for i, o in

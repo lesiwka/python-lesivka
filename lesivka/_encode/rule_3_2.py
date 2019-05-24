@@ -28,7 +28,7 @@ def get_convert():
 
     repl = replacer(data)
 
-    def convert(text):
+    def _(text):
         for prefix in PREFIXES:
             if text.upper().startswith(prefix):
                 index = len(prefix)
@@ -36,7 +36,7 @@ def get_convert():
 
         return repl(text)
 
-    return convert
+    return _
 
 
 convert = get_convert()
