@@ -7,7 +7,7 @@ from ..diacritics import APOSTROPHES
 
 
 def get_convert():
-    pattern = re.compile('(\w)[%s](\w)' % APOSTROPHES, re.UNICODE)
+    pattern = re.compile(r'(\w)[%s](\w)' % APOSTROPHES, re.UNICODE)
 
     def convert(text):
         return ''.join(t for t in pattern.split(text))
