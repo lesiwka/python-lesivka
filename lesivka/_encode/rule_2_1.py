@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from itertools import product
 
 from ..diacritics import ACUTE
 from ..utils import applier, replacer, translator
@@ -9,8 +10,7 @@ AFTER = 'AEIOUJ' + ACUTE
 
 
 def get_step2():
-    data = zip(AFTER + AFTER.lower(),
-               OUT * len(AFTER) + OUT.lower() * len(AFTER))
+    data = product(AFTER + AFTER.lower(), OUT + OUT.lower())
     repl = replacer({c + ACUTE + i: c + i for c, i in data})
 
     def _(text):

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from itertools import product
 
 from ..diacritics import ACUTE
 from ..utils import applier, replacer, translator
@@ -15,11 +16,9 @@ TRANSLATE = {
 
 
 def get_step1():
-    data = {}
-    for c in AFTER + AFTER.lower():
-        for i, o in zip(IN + IN.lower(), OUT + OUT.lower()):
-            data[c + i] = c + ACUTE + o
-
+    data = {c + i: c + ACUTE + o for c, (i, o) in
+            product(AFTER + AFTER.lower(),
+                    zip(IN + IN.lower(), OUT + OUT.lower()))}
     return replacer(data)
 
 
