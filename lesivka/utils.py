@@ -49,7 +49,9 @@ def get_word_cls(valid, action):
 
             p, n, w = self.get_prev(), self.get_next(), action(self._word)
 
-            if self.is_upper() and (p and p.is_upper() or n and n.is_upper()):
+            if (self.is_upper()
+                    and ((p and p.is_upper() or n and n.is_upper())
+                         or (not p and not n))):
                 return w.upper()
 
             if w and self._word.istitle():
