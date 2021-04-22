@@ -1,7 +1,3 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
-setup(
-    name='lesivka',
-    version='1.0.20200422',
-    packages=find_packages(),
-)
+setup()

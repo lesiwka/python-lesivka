@@ -1,2 +1,0 @@
-future ; python_version < "3"
-pytest
