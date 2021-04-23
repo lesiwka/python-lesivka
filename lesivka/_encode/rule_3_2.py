@@ -20,6 +20,13 @@ REPLACE = {
     'ДЗ': 'Ƶ',
 }
 
+EXCLUDES = (
+    "ПЕРЕДЗВЕН",
+    "ПЕРЕДЗВІН",
+    "ПЕРЕДЗВОН",
+    "ПЕРЕДЗИЖЧ",
+)
+
 
 def get_convert():
     data = REPLACE.copy()
@@ -30,7 +37,8 @@ def get_convert():
 
     def _(text):
         for prefix in PREFIXES:
-            if text.upper().startswith(prefix):
+            _text = text.upper()
+            if _text.startswith(prefix) and not _text.startswith(EXCLUDES):
                 index = len(prefix)
                 return text[:index] + repl(text[index:])
 
