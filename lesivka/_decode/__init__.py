@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from ..diacritics import ACUTE, CARON
+from ..utils import Converter, applier
 from . import (
+    postprocess,
     preprocess,
     rule_1_1,
     rule_1_2,
@@ -15,8 +18,6 @@ from . import (
     rule_3_1,
     rule_3_2,
 )
-from ..diacritics import ACUTE, CARON
-from ..utils import Converter, applier
 
 ORDER = (
     preprocess,
@@ -31,6 +32,7 @@ ORDER = (
     rule_1_4,
     rule_1_5,
     rule_3_2,
+    postprocess,
 )
 
 LAT = 'ABCČDĐEFGHIJKLMNOPRSŠTUVXZŽƵ' + ACUTE + CARON + 'ĆĹŃŔŚŹǴḰḾṔ'
