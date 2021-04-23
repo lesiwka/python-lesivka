@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from ..diacritics import ACUTE, APOSTROPHES
+from ..utils import Converter, applier
 from . import (
+    postprocess,
     rule_1_1,
     rule_1_2,
     rule_1_3,
@@ -14,8 +17,6 @@ from . import (
     rule_3_1,
     rule_3_2,
 )
-from ..diacritics import ACUTE, APOSTROPHES
-from ..utils import Converter, applier
 
 ORDER = (
     rule_1_6,
@@ -29,6 +30,7 @@ ORDER = (
     rule_1_7,
     rule_2_1,
     rule_3_1,
+    postprocess,
 )
 
 CYR = 'АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ' + ACUTE + APOSTROPHES
