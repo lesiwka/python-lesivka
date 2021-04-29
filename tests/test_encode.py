@@ -75,6 +75,9 @@ from lesivka import encode
         ("передзимовий", "peredzimovij"),
         ("передз'їздівський", "peredzjizd́ivśkij"),
         ("Укрінформ", "Ukrinform"),
+        ("наївся", "najivśa"),
+        ("з'їв", "zjiv"),
+        ("нї", "ńi"),
     ),
 )
 def test_encode(given, expected):

@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 from itertools import product
 
 from ..diacritics import ACUTE
 from ..utils import applier, replacer, translator
 
-IN, OUT = 'ЄЮЯ', 'EUA'
-AFTER = 'БВГҐДЖЗКЛМНПРСТФХЦЧШЩ'
+IN, OUT = "ЄЇЮЯ", "EIUA"
+AFTER = "БВГҐДЖЗКЛМНПРСТФХЦЧШЩ"
 
 TRANSLATE = {
     'Є': 'JE',
+    "Ї": "JI",  # rule_1_6
     'Ю': 'JU',
     'Я': 'JA',
 }
