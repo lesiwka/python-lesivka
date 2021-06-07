@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from ..diacritics import ACUTE, CARON
+from ..ascii import deasciilator
+from ..diacritics import ACUTE, APOSTROPHES, CARON
 from ..utils import Converter, applier
 from . import (
     postprocess,
@@ -37,5 +38,26 @@ ORDER = (
 
 LAT = 'ABCČDĐEFGHIJKLMNOPRSŠTUVXZŽƵ' + ACUTE + CARON + 'ĆĹŃŔŚŹǴḰḾṔ'
 
-convert = applier(*(rule.convert for rule in ORDER))
-decode = Converter(r'([^\w%s]+)' % (ACUTE + CARON), LAT, convert)
+
+def get_decode():
+    def _(text, no_diacritics=False):
+        converters = [rule.convert for rule in ORDER]
+        converters_ascii = [deasciilator] + converters
+
+        convert = applier(*converters)
+        convert_acsii = applier(*converters_ascii)
+
+        split = r"([^\w%s]+)" % (ACUTE + CARON)
+        split_ascii = r"([^\w%s]+)" % (ACUTE + CARON + APOSTROPHES)
+
+        converter = Converter(split, LAT, convert)
+        converter_ascii = Converter(split_ascii, LAT + "QW'", convert_acsii)
+
+        return (converter_ascii if no_diacritics else converter)(text)
+
+    return _
+
+
+decode = get_decode()
+
+del get_decode

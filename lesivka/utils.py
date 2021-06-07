@@ -9,13 +9,18 @@ class Converter(object):
         self.pattern = re.compile(split, re.UNICODE)
         self.word_cls = get_word_cls(valid, action)
 
-    def __call__(self, text):
+    def __call__(self, text, no_diacritics=False):
         words = []
 
         word = None
         for string in self.pattern.split(text):
             word = self.word_cls(string, prev=word)
             words.append(word)
+
+        output = "".join(map(str, words))
+
+        if no_diacritics:
+            output = asciilator()
 
         return ''.join(map(str, words))
 

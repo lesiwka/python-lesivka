@@ -70,3 +70,18 @@ from lesivka.diacritics import CARON
 )
 def test_decode(given, expected):
     assert decode(given) == expected
+
+
+@pytest.mark.parametrize(
+    ("given", "expected"),
+    (
+        ("cwajka", "чайка"),
+        ("swpak", "шпак"),
+        ("zwaba", "жаба"),
+        ("swcwur", "щур"),
+        ("dqm'il'", "джміль"),
+        ("gezq'", "ґедзь"),
+    ),
+)
+def test_decode_ascii(given, expected):
+    assert decode(given, no_diacritics=True) == expected

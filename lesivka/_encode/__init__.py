@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from ..ascii import asciilator
 from ..diacritics import ACUTE, APOSTROPHES
 from ..utils import Converter, applier
 from . import (
@@ -33,5 +34,25 @@ ORDER = (
 
 CYR = 'АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ' + ACUTE + APOSTROPHES
 
-convert = applier(*(rule.convert for rule in ORDER))
-encode = Converter(r'([^\w%s]+)' % (ACUTE + APOSTROPHES), CYR, convert)
+
+def get_encode():
+    def _(text, no_diacritics=False):
+        converters = [rule.convert for rule in ORDER]
+        converters_ascii = converters + [asciilator]
+
+        convert = applier(*converters)
+        convert_acsii = applier(*converters_ascii)
+
+        split = r"([^\w%s]+)" % (ACUTE + APOSTROPHES)
+
+        converter = Converter(split, CYR, convert)
+        converter_ascii = Converter(split, CYR, convert_acsii)
+
+        return (converter_ascii if no_diacritics else converter)(text)
+
+    return _
+
+
+encode = get_encode()
+
+del get_encode

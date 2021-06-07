@@ -82,3 +82,18 @@ from lesivka import encode
 )
 def test_encode(given, expected):
     assert encode(given) == expected
+
+
+@pytest.mark.parametrize(
+    ("given", "expected"),
+    (
+        ("чайка", "cwajka"),
+        ("шпак", "swpak"),
+        ("жаба", "zwaba"),
+        ("щур", "swcwur"),
+        ("джміль", "dqm'il'"),
+        ("ґедзь", "gezq'"),
+    ),
+)
+def test_encode_ascii(given, expected):
+    assert encode(given, no_diacritics=True) == expected
