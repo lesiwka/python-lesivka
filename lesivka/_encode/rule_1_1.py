@@ -3,6 +3,6 @@ from __future__ import unicode_literals
 
 from ..utils import translator
 
-IN, OUT = 'АЕИОУ', 'AEIOU'
+IN, OUT = "АЕИІОУ", "AEYIOU"
 
 convert = translator(IN + IN.lower(), OUT + OUT.lower())

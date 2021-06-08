@@ -5,14 +5,16 @@ from ..diacritics import ACUTE
 from ..utils import replacer
 
 AREPLACE = {
-    ACUTE + 'E': 'Є',
-    ACUTE + 'U': 'Ю',
-    ACUTE + 'A': 'Я',
+    ACUTE + "E": "Є",
+    ACUTE + "I": "Ї",
+    ACUTE + "U": "Ю",
+    ACUTE + "A": "Я",
 }
 JREPLACE = {
-    'JE': 'Є',
-    'JU': 'Ю',
-    'JA': 'Я',
+    "JE": "Є",
+    "JY": "Ї",
+    "JU": "Ю",
+    "JA": "Я",
 }
 
 

@@ -14,7 +14,6 @@ from . import (
     rule_1_5,
     rule_1_6,
     rule_1_7,
-    rule_2_1,
     rule_2_2,
     rule_3_1,
     rule_3_2,
@@ -23,7 +22,6 @@ from . import (
 ORDER = (
     preprocess,
     rule_3_1,
-    rule_2_1,
     rule_2_2,
     rule_1_6,
     rule_1_7,
@@ -36,7 +34,7 @@ ORDER = (
     postprocess,
 )
 
-LAT = 'ABCČDĐEFGHIJKLMNOPRSŠTUVXZŽƵ' + ACUTE + CARON + 'ĆĹŃŔŚŹǴḰḾṔ'
+LAT = "ABCČDĐEFGHIJKLMNOPRSŠTUVXYZŽƵ" + ACUTE + CARON + "ĆĹŃŔŚŹǴḰḾṔ"
 
 
 def get_decode():

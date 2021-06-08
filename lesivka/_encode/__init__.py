@@ -12,7 +12,6 @@ from . import (
     rule_1_4,
     rule_1_5,
     rule_1_7,
-    rule_2_1,
     rule_2_2,
     rule_3_1,
     rule_3_2,
@@ -27,7 +26,6 @@ ORDER = (
     rule_1_4,
     rule_1_5,
     rule_1_7,
-    rule_2_1,
     rule_3_1,
     postprocess,
 )
