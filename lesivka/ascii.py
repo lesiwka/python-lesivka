@@ -6,11 +6,11 @@ from .utils import replacer, translator
 
 TRANSLATE = {
     ACUTE: "'",
-    "Č": "CW",
-    "Š": "SW",
-    "Ž": "ZW",
+    "Ƶ": "QQ",
+    "Č": "CQ",
+    "Š": "SQ",
+    "Ž": "ZQ",
     "Đ": "DQ",
-    "Ƶ": "ZQ",
 }
 
 
