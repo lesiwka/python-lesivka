@@ -36,7 +36,7 @@ ORDER = (
     postprocess,
 )
 
-LAT = "ABCČDĐEFGHIJKLMNOPRSŠTUVWXYZŽƵ" + ACUTE + CARON + "ĆĹŃŔŚŹǴḰḾṔ"
+LAT = "ABCČDĐEFGHIJKLMNOPRSŠTUVWXYZŽƵ" + ACUTE + CARON + "ĆĹŃŔŚŹǴḰḾṔẂ"
 
 
 def get_decode():
@@ -51,7 +51,7 @@ def get_decode():
         split_ascii = r"([^\w%s]+)" % (ACUTE + CARON + APOSTROPHES)
 
         converter = Converter(split, LAT, convert)
-        converter_ascii = Converter(split_ascii, LAT + "QW'", convert_acsii)
+        converter_ascii = Converter(split_ascii, LAT + "Q'", convert_acsii)
 
         return (converter_ascii if no_diacritics else converter)(text)
 
