@@ -40,18 +40,16 @@ LAT = "ABCČDĐEFGHIJKLMNOPRSŠTUVXYZŽƵ" + ACUTE + CARON + "ĆĹŃŔŚŹǴḰ�
 def get_decode():
     def _(text, no_diacritics=False):
         converters = [rule.convert for rule in ORDER]
-        converters_ascii = [deasciilator] + converters
+        split_chars = ACUTE + CARON
+        valid = LAT
 
-        convert = applier(*converters)
-        convert_acsii = applier(*converters_ascii)
+        if no_diacritics:
+            converters.insert(0, deasciilator)
+            split_chars += APOSTROPHES
+            valid += "QW'"
 
-        split = r"([^\w%s]+)" % (ACUTE + CARON)
-        split_ascii = r"([^\w%s]+)" % (ACUTE + CARON + APOSTROPHES)
-
-        converter = Converter(split, LAT, convert)
-        converter_ascii = Converter(split_ascii, LAT + "QW'", convert_acsii)
-
-        return (converter_ascii if no_diacritics else converter)(text)
+        split = r"([^\w%s]+)" % split_chars
+        return Converter(split, valid, applier(*converters))(text)
 
     return _
 
