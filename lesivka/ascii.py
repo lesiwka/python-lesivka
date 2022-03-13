@@ -1,32 +1,36 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from collections import OrderedDict
+
 from .diacritics import ACUTE
 from .utils import replacer, translator
 
-TRANSLATE = {
-    ACUTE: "'",
-    "Ƶ": "QQ",
-    "Č": "CQ",
-    "Š": "SQ",
-    "Ž": "ZQ",
-    "Đ": "DQ",
-}
+TRANSLATE = OrderedDict(
+    (
+        (ACUTE, "'"),
+        ("Ƶ", "QQ"),
+        ("Č", "CQ"),
+        ("Š", "SQ"),
+        ("Ž", "ZQ"),
+        ("Đ", "DQ"),
+    )
+)
 
 
 def get_asciilator():
     data = TRANSLATE.copy()
-    data.update({i.lower(): o.lower() for i, o in TRANSLATE.items()})
+    data.update((i.lower(), o.lower()) for i, o in TRANSLATE.items())
 
-    return translator(data)
+    return translator(dict(data))
 
 
 def get_deasciilator():
-    replace = {v: k for k, v in TRANSLATE.items()}
+    replace = OrderedDict((v, k) for k, v in TRANSLATE.items())
 
     data = replace.copy()
-    data.update({i.title(): o for i, o in replace.items()})
-    data.update({i.lower(): o.lower() for i, o in replace.items()})
+    data.update((i.title(), o) for i, o in replace.items())
+    data.update((i.lower(), o.lower()) for i, o in replace.items())
 
     return replacer(data)
 
