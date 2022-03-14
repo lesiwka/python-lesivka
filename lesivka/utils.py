@@ -48,15 +48,16 @@ def get_word_cls(valid, action):
                 return self._word
 
             orig = self._word
-            p, n, w = self.get_prev(), self.get_next(), self.execute(action)
+            p, n = self.get_prev(), self.get_next()
+            action(self)
 
-            if self.is_upper() and (p and p.is_upper() or n and n.is_upper()):
-                return w.upper()
+            if orig.isupper() and (p and p.is_upper() or n and n.is_upper()):
+                return self._word.upper()
 
-            if w and orig.istitle():
-                return w[0].upper() + w[1:].lower()
+            if self._word and orig.istitle():
+                return self._word[0].upper() + self._word[1:].lower()
 
-            return w
+            return self._word
 
         def __bool__(self):
             return not set(self._word.upper()) - valid
@@ -95,10 +96,6 @@ def get_word_cls(valid, action):
         def apply(self, func, index=0):
             self._word = self._word[:index] + func(self._word[index:])
             return self
-
-        def execute(self, func):
-            func(self)
-            return self._word
 
         def replace(self, old, new):
             self._word = self._word.replace(old, new)
