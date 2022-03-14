@@ -37,23 +37,15 @@ ORDER = (
 LAT = "ABCČDĐEFGHIJKLMNOPRSŠTUVXYZŽƵ" + ACUTE + CARON + "ĆĹŃŔŚŹǴḰḾṔ"
 
 
-def get_decode():
-    def _(text, no_diacritics=False):
-        converters = [rule.convert for rule in ORDER]
-        split_chars = ACUTE + CARON
-        valid = LAT
+def decode(text, no_diacritics=False):
+    converters = [rule.convert for rule in ORDER]
+    split_chars = ACUTE + CARON
+    valid = LAT
 
-        if no_diacritics:
-            converters.insert(0, deasciilator)
-            split_chars += APOSTROPHES
-            valid += "QW'"
+    if no_diacritics:
+        converters.insert(0, deasciilator)
+        split_chars += APOSTROPHES
+        valid += "QW'"
 
-        split = r"([^\w%s]+)" % split_chars
-        return Converter(split, valid, applier(*converters))(text)
-
-    return _
-
-
-decode = get_decode()
-
-del get_decode
+    split = r"([^\w%s]+)" % split_chars
+    return Converter(split, valid, applier(*converters))(text)
