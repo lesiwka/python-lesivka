@@ -35,14 +35,14 @@ def get_convert():
 
     repl = replacer(data)
 
-    def _(text):
-        _text = text.upper()
+    def _(word):
+        text = word.get_word().upper()
         for prefix in PREFIXES:
-            if _text.startswith(prefix) and not _text.startswith(EXCLUDES):
+            if text.startswith(prefix) and not text.startswith(EXCLUDES):
                 index = len(prefix)
-                return text[:index] + repl(text[index:])
+                return word.apply(repl, index)
 
-        return repl(text)
+        return repl(word)
 
     return _
 

@@ -26,10 +26,10 @@ class Converter(object):
 
 
 def applier(*funcs):
-    def _(text):
+    def _(word):
         for func in funcs:
-            text = func(text)
-        return text
+            word = func(word)
+        return word
 
     return _
 
@@ -52,20 +52,19 @@ def get_word_cls(valid, action):
             if not self:
                 return self._word
 
-            p, n, w = self.get_prev(), self.get_next(), action(self._word)
+            orig = self._word
+            p, n, w = self.get_prev(), self.get_next(), self.execute(action)
 
             if self.is_upper() and (p and p.is_upper() or n and n.is_upper()):
                 return w.upper()
 
-            if w and self._word.istitle():
+            if w and orig.istitle():
                 return w[0].upper() + w[1:].lower()
 
             return w
 
         def __bool__(self):
             return not set(self._word.upper()) - valid
-
-        __nonzero__ = __bool__
 
         def get_next(self):
             if self._next is not None:
@@ -81,20 +80,66 @@ def get_word_cls(valid, action):
                 self._prev = self._prev.get_prev()
                 return self._prev
 
+        def get_word(self):
+            return self._word
+
         def is_upper(self):
             return self._word.isupper()
 
         def set_next(self, next_):
             self._next = next_
 
+        def __add__(self, other):
+            self._word += other
+            return self
+
+        def __radd__(self, other):
+            self._word = other + self._word
+            return self
+
+        def apply(self, func, index=0):
+            self._word = self._word[:index] + func(self._word[index:])
+            return self
+
+        def execute(self, func):
+            func(self)
+            return self._word
+
+        def replace(self, old, new):
+            self._word = self._word.replace(old, new)
+            return self
+
+        def re_replace(self, pattern, new):
+            self._word = new.join(t for t in pattern.split(self._word))
+            return self
+
+        def startswith(self, prefix):
+            return self._word.startswith(prefix)
+
+        def strip(self, chars):
+            self._word = self._word.strip(chars)
+            return self
+
+        def lstrip(self, chars):
+            self._word = self._word.lstrip(chars)
+            return self
+
+        def translate(self, table):
+            self._word = self._word.translate(table)
+            return self
+
+        def upper(self):
+            self._word = self._word.upper()
+            return self
+
     return Word
 
 
-def replacer(d):
-    def _(text):
-        for i, o in d.items():
-            text = text.replace(i, o)
-        return text
+def replacer(table):
+    def _(word):
+        for i, o in table.items():
+            word = word.replace(i, o)
+        return word
 
     return _
 
@@ -102,7 +147,7 @@ def replacer(d):
 def translator(*args):
     trans = str.maketrans(*args)
 
-    def _(text):
-        return text.translate(trans)
+    def _(word):
+        return word.translate(trans)
 
     return _

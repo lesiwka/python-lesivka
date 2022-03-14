@@ -80,6 +80,8 @@ from lesivka import encode
         ("з'їв", "zjiw"),
         ("нї", "ńi"),
         ("вйо", "vjo"),
+        ("братів-українців", "brativ-ukrajinciw"),
+        ("в Україну", "v Ukrajinu"),
     ),
 )
 def test_encode(given, expected):

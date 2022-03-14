@@ -12,8 +12,16 @@ AFTER = ZERO_VOWEL + "AEYIOU"
 BEFORE = ZERO_CONSONANT + "BVHGDZKLMNPRSTFXCŽČŠĐƵ"
 
 
-def add_zero_letters(text):
-    return ZERO_VOWEL + text + ZERO_CONSONANT
+def add_zero_letters(word):
+    suffix = ZERO_CONSONANT
+
+    next_word = word.get_next()
+    if next_word:
+        next_word_value = next_word.get_word()
+        if next_word_value and next_word_value[0].upper() not in BEFORE:
+            suffix = ZERO_VOWEL
+
+    return ZERO_VOWEL + word + suffix
 
 
 def get_convert():
@@ -28,8 +36,8 @@ def get_convert():
     return replacer(data)
 
 
-def strip_zero_letters(text):
-    return text.strip(ZERO_VOWEL + ZERO_CONSONANT)
+def strip_zero_letters(word):
+    return word.strip(ZERO_VOWEL + ZERO_CONSONANT)
 
 
 convert = applier(add_zero_letters, get_convert(), strip_zero_letters)
