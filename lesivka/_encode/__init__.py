@@ -35,24 +35,10 @@ ORDER = (
 CYR = 'АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ' + ACUTE + APOSTROPHES
 
 
-def get_encode():
-    def _(text, no_diacritics=False):
-        converters = [rule.convert for rule in ORDER]
-        converters_ascii = converters + [asciilator]
+def encode(text, no_diacritics=False):
+    converters = [rule.convert for rule in ORDER]
+    if no_diacritics:
+        converters.append(asciilator)
 
-        convert = applier(*converters)
-        convert_acsii = applier(*converters_ascii)
-
-        split = r"([^\w%s]+)" % (ACUTE + APOSTROPHES)
-
-        converter = Converter(split, CYR, convert)
-        converter_ascii = Converter(split, CYR, convert_acsii)
-
-        return (converter_ascii if no_diacritics else converter)(text)
-
-    return _
-
-
-encode = get_encode()
-
-del get_encode
+    split = r"([^\w%s]+)" % (ACUTE + APOSTROPHES)
+    return Converter(split, CYR, applier(*converters))(text)
