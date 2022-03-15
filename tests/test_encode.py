@@ -88,6 +88,8 @@ from lesivka import encode
         ("впав — упав", "wpaw — upaw"),
         ("ЮНІСЕФ", "JuNISEF"),
         ("ЦДЮТ", "CDJuT"),
+        ("ВВР", "VVR"),
+        ("ВВП", "VWP"),
     ),
 )
 def test_encode(given, expected):
