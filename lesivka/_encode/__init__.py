@@ -5,6 +5,7 @@ from ..ascii import asciilator
 from ..diacritics import ACUTE, APOSTROPHES
 from ..utils import Converter, applier
 from . import (
+    abbr,
     postprocess,
     rule_1_1,
     rule_1_2,
@@ -19,6 +20,7 @@ from . import (
 )
 
 ORDER = (
+    abbr,
     rule_2_2,
     rule_3_2,
     rule_1_1,

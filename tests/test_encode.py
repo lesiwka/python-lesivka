@@ -86,6 +86,8 @@ from lesivka import encode
         ("удав акулі", "udav akuli"),
         ("удав бабакові", "udaw babakovi"),
         ("впав — упав", "wpaw — upaw"),
+        ("ЮНІСЕФ", "JuNISEF"),
+        ("ЦДЮТ", "CDJuT"),
     ),
 )
 def test_encode(given, expected):

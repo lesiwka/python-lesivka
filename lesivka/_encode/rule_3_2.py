@@ -36,7 +36,7 @@ def get_convert():
     repl = replacer(data)
 
     def _(word):
-        text = word.get_word().upper()
+        text = word.word.upper()
         for prefix in PREFIXES:
             if text.startswith(prefix) and not text.startswith(EXCLUDES):
                 index = len(prefix)

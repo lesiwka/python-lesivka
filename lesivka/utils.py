@@ -17,7 +17,7 @@ class Converter(object):
             word = self.word_cls(string, prev=word)
             words.append(word)
 
-        return ''.join(map(str, words))
+        return "".join(word.convert() for word in words)
 
 
 def applier(*funcs):
@@ -34,37 +34,38 @@ def get_word_cls(valid, action):
 
     class Word(object):
         def __init__(self, word='', prev=None, next_=None):
-            self._word = word
+            self.word = word
             self._prev = prev
             self._next = next_
+            self.abbr = False
             if prev is not None:
                 prev.set_next(self)
 
         def __repr__(self):
-            return repr(self._word)
+            return repr(self.word)
 
-        def __str__(self):
+        def convert(self):
             if not self:
-                return self._word
+                return self.word
 
-            orig = self._word
+            orig = self.word
             p, n = self.get_prev(), self.get_next()
             action(self)
 
             if orig.isupper() and (p and p.is_upper() or n and n.is_upper()):
-                return self._word.upper()
+                return self.word.upper()
 
-            if self._word and orig.istitle():
-                return self._word[0].upper() + self._word[1:].lower()
+            if self.word and orig.istitle():
+                return self.word[0].upper() + self.word[1:].lower()
 
-            return self._word
+            return self.word
 
         def __bool__(self):
-            return not set(self._word.upper()) - valid
+            return not set(self.word.upper()) - valid
 
         def has_stop(self):
             if self._next is not None:
-                return self._next.get_word() not in " -\u2010"
+                return self._next.word not in " -\u2010"
 
         def get_next(self):
             if self._next is not None:
@@ -74,52 +75,49 @@ def get_word_cls(valid, action):
             if self._prev is not None:
                 return self._prev if self._prev else self._prev.get_prev()
 
-        def get_word(self):
-            return self._word
-
         def is_upper(self):
-            return self._word.isupper()
+            return self.word.isupper()
 
         def set_next(self, next_):
             self._next = next_
 
         def __add__(self, other):
-            self._word += other
+            self.word += other
             return self
 
         def __radd__(self, other):
-            self._word = other + self._word
+            self.word = other + self.word
             return self
 
         def apply(self, func, index=0):
-            self._word = self._word[:index] + func(self._word[index:])
+            self.word = self.word[:index] + func(self.word[index:])
             return self
 
         def replace(self, old, new):
-            self._word = self._word.replace(old, new)
+            self.word = self.word.replace(old, new)
             return self
 
         def re_replace(self, pattern, new):
-            self._word = new.join(t for t in pattern.split(self._word))
+            self.word = new.join(t for t in pattern.split(self.word))
             return self
 
         def startswith(self, prefix):
-            return self._word.startswith(prefix)
+            return self.word.startswith(prefix)
 
         def strip(self, chars):
-            self._word = self._word.strip(chars)
+            self.word = self.word.strip(chars)
             return self
 
         def lstrip(self, chars):
-            self._word = self._word.lstrip(chars)
+            self.word = self.word.lstrip(chars)
             return self
 
         def translate(self, table):
-            self._word = self._word.translate(table)
+            self.word = self.word.translate(table)
             return self
 
         def upper(self):
-            self._word = self._word.upper()
+            self.word = self.word.upper()
             return self
 
     return Word

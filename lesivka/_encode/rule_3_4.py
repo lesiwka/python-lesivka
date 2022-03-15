@@ -18,7 +18,7 @@ def add_zero_letters(word):
     if not word.has_stop():
         next_word = word.get_next()
         if next_word:
-            next_word_value = next_word.get_word()
+            next_word_value = next_word.word
             if next_word_value and next_word_value[0].upper() not in BEFORE:
                 suffix = ZERO_VOWEL
 
