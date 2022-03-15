@@ -90,6 +90,9 @@ from lesivka import encode
         ("ЦДЮТ", "CDJuT"),
         ("ВВР", "VVR"),
         ("ВВП", "VWP"),
+        ("бульв. Шевченка", "buĺv. Šewčenka"),
+        ("Див. деталі", "Dyv. detali"),
+        ("в.о.", "v.o."),
     ),
 )
 def test_encode(given, expected):

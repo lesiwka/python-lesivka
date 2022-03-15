@@ -172,6 +172,25 @@ ABBR_W_EXCLUDES = {
     "ЦОВВ": "COVW",
 }
 
+ABBR_W_DOT_EXCLUDES = [
+    "В",
+    "ГВ",
+    "ДИВ",
+    "ЗАВ",
+    "ЗВ",
+    "ІВ",
+    "ІНВ",
+    "КВ",
+    "ПЕРЕВ",
+    "ПОВ",
+    "ПРОВ",
+    "РОДОВ",
+    "СВ",
+    "СВВ",
+    "СЛОВ",
+    "ТОВ",
+]
+
 
 abbr = applier(
     rule_1_1.convert,
@@ -182,7 +201,9 @@ abbr = applier(
 
 
 def convert(word):
-    if word.word in ABBR_W_EXCLUDES:
+    if word.word.upper() in ABBR_W_DOT_EXCLUDES and word.has_stop():
+        word.abbr = True
+    elif word.word in ABBR_W_EXCLUDES:
         word.word = ABBR_W_EXCLUDES[word.word]
         word.abbr = True
     elif word.word in ABBR:

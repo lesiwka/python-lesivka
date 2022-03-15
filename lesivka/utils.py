@@ -65,7 +65,11 @@ def get_word_cls(valid, action):
 
         def has_stop(self):
             if self._next is not None:
-                return self._next.word not in " -\u2010"
+                return self._next.word.startswith(".")
+
+        def continues(self):
+            if self._next is not None:
+                return self._next.word in " -\u2010"
 
         def get_next(self):
             if self._next is not None:

@@ -15,7 +15,7 @@ BEFORE = ZERO_CONSONANT + "БВГҐДЖЗКЛМНПРСТФХЦЧШЩ"
 def add_zero_letters(word):
     suffix = ZERO_CONSONANT
 
-    if not word.has_stop():
+    if word.continues():
         next_word = word.get_next()
         if next_word:
             next_word_value = next_word.word
