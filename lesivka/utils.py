@@ -62,19 +62,17 @@ def get_word_cls(valid, action):
         def __bool__(self):
             return not set(self._word.upper()) - valid
 
+        def has_stop(self):
+            if self._next is not None:
+                return self._next.get_word() not in " -\u2010"
+
         def get_next(self):
             if self._next is not None:
-                if self._next:
-                    return self._next
-                self._next = self._next.get_next()
-                return self._next
+                return self._next if self._next else self._next.get_next()
 
         def get_prev(self):
             if self._prev is not None:
-                if self._prev:
-                    return self._prev
-                self._prev = self._prev.get_prev()
-                return self._prev
+                return self._prev if self._prev else self._prev.get_prev()
 
         def get_word(self):
             return self._word

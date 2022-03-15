@@ -15,11 +15,12 @@ BEFORE = ZERO_CONSONANT + "BVHGDZKLMNPRSTFXCŽČŠĐƵ"
 def add_zero_letters(word):
     suffix = ZERO_CONSONANT
 
-    next_word = word.get_next()
-    if next_word:
-        next_word_value = next_word.get_word()
-        if next_word_value and next_word_value[0].upper() not in BEFORE:
-            suffix = ZERO_VOWEL
+    if not word.has_stop():
+        next_word = word.get_next()
+        if next_word:
+            next_word_value = next_word.get_word()
+            if next_word_value and next_word_value[0].upper() not in BEFORE:
+                suffix = ZERO_VOWEL
 
     return ZERO_VOWEL + word + suffix
 
