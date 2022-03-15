@@ -22,13 +22,13 @@ ORDER = (
     rule_2_2,
     rule_3_2,
     rule_1_1,
+    rule_3_4,
     rule_1_2,
     rule_1_3,
     rule_1_4,
     rule_1_5,
     rule_1_7,
     rule_3_1,
-    rule_3_4,
     postprocess,
 )
 

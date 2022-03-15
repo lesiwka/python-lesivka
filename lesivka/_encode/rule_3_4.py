@@ -9,7 +9,7 @@ ZERO_VOWEL = "\uee76"
 ZERO_CONSONANT = "\uff63"
 
 AFTER = ZERO_VOWEL + "AEYIOU"
-BEFORE = ZERO_CONSONANT + "BVHGDZKLMNPRSTFXCŽČŠĐƵ"
+BEFORE = ZERO_CONSONANT + "БВГҐДЗКЛМНПРСТФХЦ"
 
 
 def add_zero_letters(word):
@@ -31,7 +31,7 @@ def get_convert():
     data = {
         "".join(i): "".join(o)
         for i, o in zip(
-            product(after, "vV", before), product(after, "wW", before)
+            product(after, "вВ", before), product(after, "wW", before)
         )
     }
     return replacer(data)

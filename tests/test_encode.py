@@ -84,6 +84,7 @@ from lesivka import encode
         ("в Україну", "v Ukrajinu"),
         ("удав, акула", "udaw, akula"),
         ("удав акулі", "udav akuli"),
+        ("удав бабакові", "udaw babakovi"),
         ("впав — упав", "wpaw — upaw"),
     ),
 )
