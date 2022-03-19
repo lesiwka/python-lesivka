@@ -69,7 +69,10 @@ def get_word_cls(valid, action):
 
         def continues(self):
             if self._next is not None:
-                return self._next.word in " -\u2010"
+                return (
+                    self._next.word in " -\u2010"
+                    or self._next.word.strip() in '"„“”«'
+                )
 
         def get_next(self):
             if self._next is not None:
