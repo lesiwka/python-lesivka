@@ -94,6 +94,7 @@ from lesivka import encode
         ("Див. деталі", "Dyv. detali"),
         ("в.о.", "v.o."),
         ("в «Атласі»", "v «Atlasi»"),
+        ("в  Європі", "v  Jewropi"),
     ),
 )
 def test_encode(given, expected):
