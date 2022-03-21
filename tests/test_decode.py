@@ -69,6 +69,7 @@ from lesivka.diacritics import CARON
         ("Melaščyn", "Мелашчин"),
         ("ńi", "нї"),
         ("jy", "ї"),
+        ("najimovirnišyj", "найімовірніший"),
     ),
 )
 def test_decode(given, expected):

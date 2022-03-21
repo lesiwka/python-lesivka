@@ -85,10 +85,10 @@ def get_word_cls(valid, action):
     return Word
 
 
-def replacer(d):
+def replacer(d, count=-1):
     def _(text):
         for i, o in d.items():
-            text = text.replace(i, o)
+            text = text.replace(i, o, count)
         return text
 
     return _
