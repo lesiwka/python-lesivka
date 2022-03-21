@@ -100,8 +100,8 @@ def get_word_cls(valid, action):
             self.word = self.word[:index] + func(self.word[index:])
             return self
 
-        def replace(self, old, new):
-            self.word = self.word.replace(old, new)
+        def replace(self, old, new, count=-1):
+            self.word = self.word.replace(old, new, count)
             return self
 
         def re_replace(self, pattern, new):
@@ -130,10 +130,10 @@ def get_word_cls(valid, action):
     return Word
 
 
-def replacer(table):
+def replacer(table, count=-1):
     def _(word):
         for i, o in table.items():
-            word = word.replace(i, o)
+            word = word.replace(i, o, count)
         return word
 
     return _
