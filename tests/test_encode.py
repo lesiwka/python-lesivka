@@ -79,7 +79,7 @@ from lesivka import encode
         ("наївся", "najiwśa"),
         ("з'їв", "zjiw"),
         ("нї", "ńi"),
-        ("вйо", "vjo"),
+        ("вйо", "wjo"),
         ("братів-українців", "brativ-ukrajinciw"),
         ("в Україну", "v Ukrajinu"),
         ("удав, акула", "udaw, akula"),
