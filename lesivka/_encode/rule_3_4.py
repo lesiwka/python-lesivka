@@ -3,13 +3,14 @@ from __future__ import unicode_literals
 
 from itertools import product
 
+from ..diacritics import APOSTROPHES
 from ..utils import applier, replacer
 
 ZERO_VOWEL = "\uee76"
 ZERO_CONSONANT = "\uff63"
 
 AFTER = ZERO_VOWEL + "AEYIOU"
-BEFORE = ZERO_CONSONANT + "БВГҐДЖЗЙКЛМНПРСТФХЦЧШЩ"
+BEFORE = ZERO_CONSONANT + "БВГҐДЖЗЙКЛМНПРСТФХЦЧШЩ" + APOSTROPHES
 
 
 def add_zero_letters(word):
