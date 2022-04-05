@@ -10,7 +10,9 @@ ZERO_VOWEL = "\uee76"
 ZERO_CONSONANT = "\uff63"
 
 AFTER = ZERO_VOWEL + "AEYIOU"
-BEFORE = ZERO_CONSONANT + "БВГҐДЖЗЙКЛМНПРСТФХЦЧШЩ" + APOSTROPHES
+_BEFORE = "БВГҐДЖЗЙКЛМНПРСТФХЦЧШЩ"
+BEFORE = _BEFORE + ZERO_CONSONANT + APOSTROPHES
+BEFORE_NEXT = _BEFORE + "ЄЇЮЯ"
 
 
 def add_zero_letters(word):
@@ -20,7 +22,10 @@ def add_zero_letters(word):
         next_word = word.get_next()
         if next_word:
             next_word_value = next_word.word
-            if next_word_value and next_word_value[0].upper() not in BEFORE:
+            if (
+                next_word_value
+                and next_word_value[0].upper() not in BEFORE_NEXT
+            ):
                 suffix = ZERO_VOWEL
 
     return ZERO_VOWEL + word + suffix
