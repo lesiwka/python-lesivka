@@ -97,6 +97,7 @@ from lesivka import encode
         ("в  Європі", "w  Jewropi"),
         ("в'язниця", "wjaznyća"),
         ("в ЄС", "w JeS"),
+        ("Та́врія", "Táwrija"),
     ),
 )
 def test_encode(given, expected):

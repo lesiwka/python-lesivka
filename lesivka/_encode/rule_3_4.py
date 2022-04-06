@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from itertools import product
 
-from ..diacritics import APOSTROPHES
+from ..diacritics import ACUTE, APOSTROPHES
 from ..utils import applier, replacer
 
 ZERO_VOWEL = "\uee76"
@@ -33,6 +33,7 @@ def add_zero_letters(word):
 
 def get_convert():
     after = AFTER + AFTER.lower()
+    after += "".join(c + ACUTE for c in after)
     before = BEFORE + BEFORE.lower()
     data = {
         "".join(i): "".join(o)
