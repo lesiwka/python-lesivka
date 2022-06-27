@@ -68,9 +68,9 @@ from lesivka import encode
         ("\u2019пір\u2019я\u2019", "\u2019pirja\u2019"),
         ("'м'яч'", "'mjač'"),
         ("'", "'"),
-        ("сыр", "сыр"),
+        # ("сыр", "сыр"),
         ("Є ", "Je "),
-        ("Ь", ""),
+        # ("Ь", ""),
         ("йі", "ji"),
         ("передзвонити", "pereƶvonyty"),
         ("передзимовий", "peredzymovyj"),
@@ -98,6 +98,26 @@ from lesivka import encode
         ("в'язниця", "wjaznyća"),
         ("в ЄС", "w JeS"),
         ("Та́врія", "Táwrija"),
+        (
+            "Якось в дні передзимові, "
+            "Захотілось вовку крові. "
+            "Кров проллється, задзюрчить... "
+            "Дзиґа-хвіст не вгомониться, "
+            "П'яний ніс, як те бджільництво, "
+            "На обличчі аж дзижчить.",
+            "Jakoś w dni peredzymovi, "
+            "Zaxotiloś vowku krovi. "
+            "Krow prolĺet́śa, zaƶ́určyt́... "
+            "Ƶyga-xvist ne whomonyt́śa, "
+            "Pjanyj nis, jak te bđiĺnyctvo, "
+            "Na oblyčči až ƶyžčyt́.",
+        ),
+        ("вгоджати", "whođaty"),
+        ("в'язати", "wjazaty"),
+        ("вв'язати", "wwjazaty"),
+        ("барвний", "barwnyj"),
+        ("Щастя", "Ščast́a"),
+        ("вщухати", "wščuxaty"),
     ),
 )
 def test_encode(given, expected):

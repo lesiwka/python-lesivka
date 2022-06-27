@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from ..ascii import deasciilator
-from ..diacritics import ACUTE, APOSTROPHES, CARON
+from ..diacritics import ACUTE, CARON
+from ..punctuation import APOSTROPHES
 from ..utils import Converter, applier
 from . import (
     postprocess,
