@@ -1,6 +1,6 @@
 import pytest
 
-from lesivka import encode
+from lesiwka import encode
 
 
 @pytest.mark.parametrize(

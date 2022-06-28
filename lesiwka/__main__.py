@@ -1,20 +1,10 @@
 import argparse
 import sys
 
-try:
-    import future
-except ImportError:
-    pass
-else:
-    import codecs
-    encoding = sys.stdin.encoding or 'utf-8'
-    sys.stdin = codecs.getreader(encoding)(sys.stdin)
-    sys.argv = [arg.decode(encoding) for arg in sys.argv]
-
 from . import decode, encode
 
-prog = 'python -m lesivka'
-description = 'A simple command line interface for lesivka module.'
+prog = "python -m lesiwka"
+description = "A simple command line interface for lesiwka module."
 
 parser = argparse.ArgumentParser(prog=prog, description=description)
 parser.add_argument("-d", "--decode", action="store_true")

@@ -1,7 +1,7 @@
 import pytest
 
-from lesivka import decode
-from lesivka.diacritics import CARON
+from lesiwka import decode
+from lesiwka.diacritics import CARON
 
 
 @pytest.mark.parametrize(
