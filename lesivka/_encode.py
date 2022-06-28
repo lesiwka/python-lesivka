@@ -1,8 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 import re
-from collections import OrderedDict
 
 from .ascii import asciilator
 from .diacritics import ACUTE

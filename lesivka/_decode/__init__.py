@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from ..ascii import deasciilator
 from ..diacritics import ACUTE, CARON
 from ..punctuation import APOSTROPHES

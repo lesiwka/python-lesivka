@@ -1,7 +1,4 @@
-from __future__ import print_function
-
 import re
-from builtins import str
 
 
 class Converter(object):
