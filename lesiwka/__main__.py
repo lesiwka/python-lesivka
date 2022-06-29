@@ -20,5 +20,5 @@ else:
     try:
         for line in sys.stdin:
             print(action(line, no_diacritics=options.no_diacritics), end="")
-    except KeyboardInterrupt:
+    except (BrokenPipeError, KeyboardInterrupt):
         pass
