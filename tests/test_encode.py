@@ -111,10 +111,11 @@ from lesiwka import encode
         ),
         ("вгоджати", "whođaty"),
         ("в'язати", "wjazaty"),
-        ("вв'язати", "wwjazaty"),
+        ("вв'язатися", "wwjazatyśa"),
         ("барвний", "barwnyj"),
         ("Щастя", "Ščast́a"),
         ("вщухати", "wščuxaty"),
+        ("чіпляються", "čipĺajut́śa"),
     ),
 )
 def test_encode(given, expected):
