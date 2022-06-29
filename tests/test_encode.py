@@ -1,6 +1,6 @@
 import pytest
 
-from lesiwka import encode
+import lesiwka
 
 
 @pytest.mark.parametrize(
@@ -120,7 +120,7 @@ from lesiwka import encode
     ),
 )
 def test_encode(given, expected):
-    assert encode(given) == expected
+    assert lesiwka.encode(given) == expected
 
 
 @pytest.mark.parametrize(
@@ -138,4 +138,13 @@ def test_encode(given, expected):
     ),
 )
 def test_encode_ascii(given, expected):
-    assert encode(given, no_diacritics=True) == expected
+    assert lesiwka.encode(given, no_diacritics=True) == expected
+
+
+def test_encode_validate(sample):
+    abetka = "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя"
+    abetka += abetka.upper()
+    text = lesiwka.encode(sample)
+    for line in text.splitlines():
+        for cyr in abetka:
+            assert cyr not in line
