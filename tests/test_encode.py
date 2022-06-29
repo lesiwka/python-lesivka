@@ -117,6 +117,7 @@ import lesiwka
         ("вщухати", "wščuxaty"),
         ("чіпляються", "čipĺajut́śa"),
         ("сім'єю", "simjeju"),
+        ("Я обізвуся до них", "Ja obizvuśa do nyx"),
     ),
 )
 def test_encode(given, expected):
