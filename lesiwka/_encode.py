@@ -16,8 +16,11 @@ iotted_lower_cyr = "єїюя"
 iotted_upper_cyr = iotted_lower_cyr.upper()
 iotted_cyr = iotted_lower_cyr + iotted_upper_cyr
 
-iotted_lower_lat = "eiua"
-iotted_upper_lat = iotted_lower_lat.upper()
+iotted_lower_out = "еіуа"
+iotted_upper_out = iotted_lower_out.upper()
+
+iot_lower_cyr = "й"
+iot_upper_cyr = iot_lower_cyr.upper()
 
 consonants_lower_cyr = "бвдгґжзйклмнпрстфхцчш"
 consonants_upper_cyr = consonants_lower_cyr.upper()
@@ -251,36 +254,36 @@ patterns += tuple((w_pattern.format(cyr), lat) for cyr, lat in zip("вВ", "wW")
 patterns += ((sqcq_upper_cyr + ending_pattern, sqcq_lower_lat.title()),)
 
 patterns += tuple(
-    (apostrophe_pattern.format(cyr), "j" + lat)
-    for cyr, lat in zip(iotted_lower_cyr, iotted_lower_lat)
+    (apostrophe_pattern.format(cyr), iot_lower_cyr + out)
+    for cyr, out in zip(iotted_lower_cyr, iotted_lower_out)
 )
 patterns += tuple(
-    (apostrophe_pattern.format(cyr) + ending_pattern, "J" + lat)
-    for cyr, lat in zip(iotted_upper_cyr, iotted_lower_lat)
+    (apostrophe_pattern.format(cyr) + ending_pattern, iot_upper_cyr + out)
+    for cyr, out in zip(iotted_upper_cyr, iotted_lower_out)
 )
 patterns += tuple(
-    (apostrophe_pattern.format(cyr), "J" + lat)
-    for cyr, lat in zip(iotted_upper_cyr, iotted_upper_lat)
+    (apostrophe_pattern.format(cyr), iot_upper_cyr + out)
+    for cyr, out in zip(iotted_upper_cyr, iotted_upper_out)
 )
 patterns += tuple(
-    (iotted_pattern.format(cyr), "j" + lat)
-    for cyr, lat in zip(iotted_lower_cyr, iotted_lower_lat)
+    (iotted_pattern.format(cyr), iot_lower_cyr + out)
+    for cyr, out in zip(iotted_lower_cyr, iotted_lower_out)
 )
 patterns += tuple(
-    (iotted_pattern.format(cyr) + ending_pattern, "J" + lat)
-    for cyr, lat in zip(iotted_upper_cyr, iotted_lower_lat)
+    (iotted_pattern.format(cyr) + ending_pattern, iot_upper_cyr + out)
+    for cyr, out in zip(iotted_upper_cyr, iotted_lower_out)
 )
 patterns += tuple(
-    (iotted_pattern.format(cyr), "J" + lat)
-    for cyr, lat in zip(iotted_upper_cyr, iotted_upper_lat)
+    (iotted_pattern.format(cyr), iot_upper_cyr + out)
+    for cyr, out in zip(iotted_upper_cyr, iotted_upper_out)
 )
 patterns += tuple(
-    (acuted_pattern.format(cyr), ACUTE + lat)
-    for cyr, lat in zip(iotted_lower_cyr, iotted_lower_lat)
+    (acuted_pattern.format(cyr), ACUTE + out)
+    for cyr, out in zip(iotted_lower_cyr, iotted_lower_out)
 )
 patterns += tuple(
-    (acuted_pattern.format(cyr), ACUTE + lat)
-    for cyr, lat in zip(iotted_upper_cyr, iotted_upper_lat)
+    (acuted_pattern.format(cyr), ACUTE + out)
+    for cyr, out in zip(iotted_upper_cyr, iotted_upper_out)
 )
 
 patterns += (
