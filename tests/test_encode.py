@@ -118,6 +118,7 @@ import lesiwka
         ("чіпляються", "čipĺajut́śa"),
         ("сім'єю", "simjeju"),
         ("Я обізвуся до них", "Ja obizvuśa do nyx"),
+        ("Є ЄС", "Je JeS"),
     ),
 )
 def test_encode(given, expected):
