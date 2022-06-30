@@ -19,8 +19,14 @@ iotted_cyr = iotted_lower_cyr + iotted_upper_cyr
 iotted_lower_out = "еіуа"
 iotted_upper_out = iotted_lower_out.upper()
 
+iotted_lower_lat = "eiua"
+iotted_upper_lat = iotted_lower_lat.upper()
+
 iot_lower_cyr = "й"
 iot_upper_cyr = iot_lower_cyr.upper()
+
+iot_lower_lat = "j"
+iot_upper_lat = iot_lower_lat.upper()
 
 consonants_lower_cyr = "бвдгґжзйклмнпрстфхцчш"
 consonants_upper_cyr = consonants_lower_cyr.upper()
@@ -268,16 +274,8 @@ patterns += tuple(
     for cyr, out in zip(iotted_upper_cyr, iotted_upper_out)
 )
 patterns += tuple(
-    (iotted_pattern.format(cyr), iot_lower_cyr + out)
-    for cyr, out in zip(iotted_lower_cyr, iotted_lower_out)
-)
-patterns += tuple(
     (iotted_pattern.format(cyr) + ending_pattern, iot_upper_cyr + out)
     for cyr, out in zip(iotted_upper_cyr, iotted_lower_out)
-)
-patterns += tuple(
-    (iotted_pattern.format(cyr), iot_upper_cyr + out)
-    for cyr, out in zip(iotted_upper_cyr, iotted_upper_out)
 )
 patterns += tuple(
     (acuted_pattern.format(cyr), ACUTE + out)
@@ -304,6 +302,18 @@ table = dict(
         vowels_cyr + consonants_cyr + soft_sign_cyr,
         vowels_lat + consonants_lat + soft_sign_lat,
     )
+)
+table.update(
+    {
+        cyr: iot_lower_lat + lat
+        for cyr, lat in zip(iotted_lower_cyr, iotted_lower_lat)
+    }
+)
+table.update(
+    {
+        cyr: iot_upper_lat + lat
+        for cyr, lat in zip(iotted_upper_cyr, iotted_upper_lat)
+    }
 )
 table[sqcq_lower_cyr] = sqcq_lower_lat
 table[sqcq_upper_cyr] = sqcq_upper_lat
