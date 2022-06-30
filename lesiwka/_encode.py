@@ -237,7 +237,6 @@ w_pattern = (
 )
 
 apostrophe_pattern = r"(?<=\w)[%s](?=\w)" % APOSTROPHES
-iotted_pattern = r"((?<=\b)|(?<=[%s])){0}" % (vowels_cyr + iotted_cyr)
 ending_pattern = r"(?=\W*[%s]|\W*$)" % (
     lower_cyr + "w" + vowels_lat + consonants_lat
 )
@@ -262,7 +261,7 @@ patterns += tuple((w_pattern.format(cyr), lat) for cyr, lat in zip("вВ", "wW")
 patterns += ((sqcq_upper_cyr + ending_pattern, sqcq_lower_lat.title()),)
 
 patterns += tuple(
-    (iotted_pattern.format(cyr) + ending_pattern, iot_upper_cyr + out)
+    (cyr + ending_pattern, iot_upper_cyr + out)
     for cyr, out in zip(iotted_upper_cyr, iotted_lower_out)
 )
 patterns += tuple(
