@@ -119,6 +119,7 @@ import lesiwka
         ("сім'єю", "simjeju"),
         ("Я обізвуся до них", "Ja obizvuśa do nyx"),
         ("Є ЄС", "Je JeS"),
+        ("портів.", "portiw."),
     ),
 )
 def test_encode(given, expected):
