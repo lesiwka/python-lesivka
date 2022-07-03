@@ -312,7 +312,8 @@ w_pattern = (
 
 apostrophe_pattern = r"(?<=[%s])[%s]{0}" % (all_cyr + w_lat, APOSTROPHES)
 iotted_pattern = r"((?<=\b)|(?<=[%s])){0}" % (vowels_cyr + iotted_cyr)
-ending_pattern = r"(?=\W*[%s]|\W*$)" % (
+ending_pattern = r"(?=[%s]|\W+[%s]|\W*$)" % (
+    lower_cyr + "w",
     lower_cyr + vowels_lat + consonants_lat + w_lat
 )
 acuted_pattern = r"(?<=[%s]){0}" % (consonants_cyr + sqcq_cyr)
