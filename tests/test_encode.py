@@ -121,6 +121,7 @@ import lesiwka
         ("Є ЄС", "Je JeS"),
         ("портів.", "portiw."),
         ("дивно_вдягнені", "dywno_wd́ahneni"),
+        ("навʼязані", "nawjazani"),
     ),
 )
 def test_encode(given, expected):

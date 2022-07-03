@@ -228,11 +228,12 @@ abbr_dot_pattern = (
 )
 
 w_pattern = (
-    r"((?<=\b)|(?<=[_%s])){0}((?=[%s])|(?=\W*$)|"
+    r"((?<=\b)|(?<=[_%s])){0}((?=[%s])|(?=[%s])|(?=\W*$)|"
     r"(?=\W*[%s](?:\W|$))|(?=\W+[%s]))"
     % (
         all_cyr,
         consonants_cyr + sqcq_cyr,
+        APOSTROPHES,
         DELIMITERS,
         consonants_cyr + sqcq_cyr + iotted_cyr + consonants_lat,
     )
