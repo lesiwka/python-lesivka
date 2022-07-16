@@ -1,2 +1,2 @@
 # python-lesivka
-Python library to convert to/from Lesivka
+Transitional package for [python-lesiwka](https://github.com/lesiwka/python-lesiwka)

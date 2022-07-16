@@ -1,2 +1,4 @@
-from ._decode import decode
-from ._encode import encode
+import lesiwka
+
+encode = lesiwka.encode
+decode = lesiwka.decode
