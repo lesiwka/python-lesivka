@@ -123,6 +123,8 @@ import lesiwka
         ("дивно_вдягнені", "dywno_wd́ahneni"),
         ("навʼязані", "nawjazani"),
         ("ЄВРОНЕСТ", "JEWRONEST"),
+        ("невідзначений", "nevidznačenyj"),
+        ("непідзвітний", "nepidzvitnyj"),
     ),
 )
 def test_encode(given, expected):
