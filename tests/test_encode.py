@@ -125,6 +125,7 @@ import lesiwka
         ("ЄВРОНЕСТ", "JEWRONEST"),
         ("невідзначений", "nevidznačenyj"),
         ("непідзвітний", "nepidzvitnyj"),
+        ("напередзаданий", "naperedzadanyj"),
     ),
 )
 def test_encode(given, expected):
