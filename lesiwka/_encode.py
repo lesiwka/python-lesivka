@@ -318,13 +318,20 @@ ending_pattern = r"(?=[%s]|\W+[%s]|\W*$)" % (
 )
 acuted_pattern = r"(?<=[%s]){0}" % (consonants_cyr + sqcq_cyr)
 
-affricate_exclude_pattern = (
-    r"(?i:(?<=\bпере))({0}(?i:з))(?i:(?=вен|він|вон|ижч))"
+affricate_exclude_patterns = (
+    r"(?i:(?<=ме)){0}(?i:((?=заклад)|(?=захис)))",
+    r"(?i:(?<=\bро)){0}(?i:(?=зал))",
+    r"(?i:((?<=\bбу)|(?<=\bзагоро)|(?<=\bме)|(?<=\bпро))){0}(?i:(?=заг[іо]н))",
+    r"(?i:((?<=\bвищеві)|(?<=\bкінові)|(?<=\bлітві)|(?<=\bра)|(?<=\bспецві)))"
+    r"{0}(?i:(?=зна[кч]))",
+    r"(?i:(?<=епі)){0}(?i:(?=зах[іо]д))",
+    r"(?i:(?<=пі)){0}(?i:(?=жи[вw]))",
 )
-affricate_pattern = (
+affricate_pattern_1 = r"(?i:(?<=\bпере)){0}(?i:з)(?i:(?=вен|він|вон|ижч))"
+affricate_pattern_2 = (
     r"(?i:(?!(?<=\bві)|(?<=\bна)|(?<=\bо)|(?<=\bпере)|(?<=\bпі)|(?<=\bпона)|"
     r"(?<=\bпопі)|(?<=\bпре)|(?<=\bсере)|(?<=\bневі)|(?<=\bнепі)|(?<=\bнапере)"
-    r")){0}"
+    r"|(?<=\bопі))){0}"
 )
 
 patterns = ()
@@ -366,15 +373,21 @@ patterns += tuple(
     for cyr, out in zip(iotted_upper_cyr, iotted_upper_out)
 )
 
-patterns += (
-    (affricate_exclude_pattern.format("д"), "ƶ"),
-    (affricate_exclude_pattern.format("Д"), "Ƶ"),
+patterns += tuple(
+    (pattern.format("д"), "d") for pattern in affricate_exclude_patterns
+)
+patterns += tuple(
+    (pattern.format("Д"), "D") for pattern in affricate_exclude_patterns
 )
 patterns += (
-    (affricate_pattern.format("дж"), "đ"),
-    (affricate_pattern.format("Дж"), "Đ"),
-    (affricate_pattern.format("дз"), "ƶ"),
-    (affricate_pattern.format("Дз"), "Ƶ"),
+    (affricate_pattern_1.format("д"), "ƶ"),
+    (affricate_pattern_1.format("Д"), "Ƶ"),
+)
+patterns += (
+    (affricate_pattern_2.format("дж"), "đ"),
+    (affricate_pattern_2.format("Дж"), "Đ"),
+    (affricate_pattern_2.format("дз"), "ƶ"),
+    (affricate_pattern_2.format("Дз"), "Ƶ"),
 )
 
 table = dict(
