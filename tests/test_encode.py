@@ -144,6 +144,10 @@ import lesiwka
         ("рослинопідживлювач", "roslynopidžywĺuvač"),
         ("вт, вер 6", "vt, ver 6"),
         ("второпати", "wtoropaty"),
+        ("СЕРІЯ", "SERIJA"),
+        ("ЗІЛЛЯ", "ZILĹA"),
+        ("БОРЩ", "BORŠČ"),
+        ("ОТАКОЇ", "OTAKOJI"),
     ),
 )
 def test_encode(given, expected):

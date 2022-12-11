@@ -53,7 +53,18 @@ w_cyr = "вВ"
 w_lat = "wW"
 
 lower_cyr = (
-    vowels_lower_cyr + iotted_lower_cyr + consonants_lower_cyr + sqcq_lower_cyr
+    vowels_lower_cyr
+    + iotted_lower_cyr
+    + consonants_lower_cyr
+    + soft_sign_lower_cyr
+    + sqcq_lower_cyr
+)
+upper_cyr = (
+    vowels_upper_cyr
+    + iotted_upper_cyr
+    + consonants_upper_cyr
+    + soft_sign_upper_cyr
+    + sqcq_upper_cyr
 )
 all_cyr = vowels_cyr + iotted_cyr + consonants_cyr + soft_sign_cyr + sqcq_cyr
 
@@ -249,6 +260,12 @@ w_pattern = (
     )
 )
 
+capital_pattern = r"(?<=[%s]){0}(?=\W*$)"
+sqcq_capital_pattern = capital_pattern % upper_cyr
+iotted_capital_pattern = capital_pattern % (
+    vowels_upper_cyr + iotted_upper_cyr
+)
+
 apostrophe_pattern = r"(?<=[%s])[%s]{0}" % (all_cyr + w_lat, APOSTROPHES)
 iotted_pattern = r"((?<=\b)|(?<=[%s])){0}" % (vowels_cyr + iotted_cyr)
 ending_pattern = r"(?=[%s]|\W+[%s]|\W*$)" % (
@@ -279,6 +296,13 @@ patterns += (
     (abbr_dot_pattern.format("В"), "V"),
 )
 patterns += tuple((r"\b{0}\b".format(cyr), lat) for cyr, lat in abbr)
+
+patterns += ((sqcq_capital_pattern.format(sqcq_upper_cyr), sqcq_upper_lat),)
+patterns += tuple(
+    (iotted_capital_pattern.format(cyr), iot_upper_cyr + out)
+    for cyr, out in zip(iotted_upper_cyr, iotted_upper_out)
+)
+
 patterns += tuple(
     (w_pattern.format(cyr), lat) for cyr, lat in zip(w_cyr, w_lat)
 )
