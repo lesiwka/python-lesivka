@@ -379,7 +379,14 @@ table[sqcq_upper_cyr] = sqcq_upper_lat
 table = str.maketrans(table)
 
 
+def pre_validate(text):
+    return re.search("[ґєіїҐЄІЇ]", text) or not re.search("[ёўъыэЁЎЪЫЭ]", text)
+
+
 def encode(text, no_diacritics=False):
+    if not pre_validate(text):
+        return text
+
     result = text
 
     for pattern, repl in patterns:
