@@ -150,6 +150,7 @@ import lesiwka
         ("БОРЩ", "BORŠČ"),
         ("ОТАКОЇ", "OTAKOJI"),
         ("літера Ы", "litera Ы"),
+        ("дзоти", "dzoty"),
     ),
 )
 def test_encode(given, expected):
