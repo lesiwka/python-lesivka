@@ -151,6 +151,7 @@ import lesiwka
         ("ОТАКОЇ", "OTAKOJI"),
         ("літера Ы", "litera Ы"),
         ("дзоти", "dzoty"),
+        ("ДЗ", "DZ"),
     ),
 )
 def test_encode(given, expected):
