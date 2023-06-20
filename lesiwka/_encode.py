@@ -24,15 +24,17 @@ iotted_upper_lat = iotted_lower_lat.upper()
 
 iot_lower_cyr = "й"
 iot_upper_cyr = iot_lower_cyr.upper()
+iot_cyr = iot_lower_cyr + iot_upper_cyr
 
 iot_lower_lat = "j"
 iot_upper_lat = iot_lower_lat.upper()
+iot_lat = iot_lower_lat + iot_upper_lat
 
-consonants_lower_cyr = "бвдгґжзйклмнпрстфхцчш"
+consonants_lower_cyr = "бвдгґжзклмнпрстфхцчш"
 consonants_upper_cyr = consonants_lower_cyr.upper()
 consonants_cyr = consonants_lower_cyr + consonants_upper_cyr
 
-consonants_lower_lat = "bvdhgžzjklmnprstfxcčš"
+consonants_lower_lat = "bvdhgžzklmnprstfxcčš"
 consonants_upper_lat = consonants_lower_lat.upper()
 consonants_lat = consonants_lower_lat + consonants_upper_lat
 
@@ -56,6 +58,7 @@ lower_cyr = (
     vowels_lower_cyr
     + iotted_lower_cyr
     + consonants_lower_cyr
+    + iot_lower_cyr
     + soft_sign_lower_cyr
     + sqcq_lower_cyr
 )
@@ -63,10 +66,11 @@ upper_cyr = (
     vowels_upper_cyr
     + iotted_upper_cyr
     + consonants_upper_cyr
+    + iot_upper_cyr
     + soft_sign_upper_cyr
     + sqcq_upper_cyr
 )
-all_cyr = vowels_cyr + iotted_cyr + consonants_cyr + soft_sign_cyr + sqcq_cyr
+all_cyr = lower_cyr + upper_cyr
 
 abbr = (
     ("ЄІБ", "JeIB"),
@@ -314,10 +318,15 @@ w_pattern = (
     r"(?=\W*[%s](?:\W|$))|(?=\W+[%s]))"
     % (
         vowels_cyr + iotted_cyr + w_cyr,
-        consonants_cyr + sqcq_cyr,
+        consonants_cyr + iot_cyr + sqcq_cyr,
         APOSTROPHES,
         DELIMITERS,
-        consonants_cyr + sqcq_cyr + iotted_cyr + consonants_lat,
+        consonants_cyr
+        + iot_cyr
+        + sqcq_cyr
+        + iotted_cyr
+        + consonants_lat
+        + iot_lat,
     )
 )
 
@@ -331,7 +340,7 @@ apostrophe_pattern = r"(?<=[%s])[%s]{0}" % (all_cyr + w_lat, APOSTROPHES)
 iotted_pattern = r"((?<=\b)|(?<=[%s])){0}" % (vowels_cyr + iotted_cyr)
 ending_pattern = r"(?=[%s]|\W+[%s]|\W*$)" % (
     lower_cyr + "w",
-    lower_cyr + vowels_lat + consonants_lat + w_lat
+    lower_cyr + vowels_lat + consonants_lat + iot_lat + w_lat,
 )
 acuted_pattern = r"(?<=[%s]){0}" % (consonants_cyr + sqcq_cyr)
 
@@ -420,8 +429,8 @@ patterns += (
 
 table = dict(
     zip(
-        vowels_cyr + consonants_cyr + soft_sign_cyr,
-        vowels_lat + consonants_lat + soft_sign_lat,
+        vowels_cyr + consonants_cyr + iot_cyr + soft_sign_cyr,
+        vowels_lat + consonants_lat + iot_lat + soft_sign_lat,
     )
 )
 table.update(

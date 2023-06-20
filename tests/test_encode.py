@@ -152,6 +152,7 @@ import lesiwka
         ("літера Ы", "litera Ы"),
         ("дзоти", "dzoty"),
         ("ДЗ", "DZ"),
+        ("майя", "majja"),
     ),
 )
 def test_encode(given, expected):
