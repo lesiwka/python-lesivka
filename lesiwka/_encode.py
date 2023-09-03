@@ -320,7 +320,7 @@ w_pattern = (
     r"(?=\W*[%s](?:\W|$))|(?=\W+[%s]))"
     % (
         vowels_cyr + iotted_cyr + w_cyr,
-        consonants_cyr + iot_cyr + sqcq_cyr,
+        consonants_cyr + iot_cyr + sqcq_cyr + w_lat,
         APOSTROPHES,
         DELIMITERS,
         consonants_cyr

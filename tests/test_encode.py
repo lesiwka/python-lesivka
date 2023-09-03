@@ -112,6 +112,7 @@ import lesiwka
         ("вгоджати", "whođaty"),
         ("в'язати", "wjazaty"),
         ("вв'язатися", "wwjazatyśa"),
+        ("Вв'язатися", "Wwjazatyśa"),
         ("різнобарвний", "riznobarvnyj"),
         ("барв", "barv"),
         ("Щастя", "Ščast́a"),
@@ -153,6 +154,7 @@ import lesiwka
         ("дзоти", "dzoty"),
         ("ДЗ", "DZ"),
         ("майя", "majja"),
+        ("вчинив Вчинок", "wčynyw Wčynok"),
     ),
 )
 def test_encode(given, expected):
